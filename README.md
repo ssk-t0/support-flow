@@ -21,10 +21,11 @@ SupportFlowは、在宅スタッフによる問い合わせ対応・返信テン
 
 | 項目 | 内容 |
 |------|------|
-| デモURL | https://your-vercel-url.vercel.app |
+| デモURL | https://support-flow-theta.vercel.app |
 | GitHub | https://github.com/ssk-t0/support-flow |
 
-> ⚠️ `localhost:3000` はローカル環境でのみ動作します。Webブラウザから直接アクセスするには上記のVercel URLをご利用ください。
+> ⚠️ `localhost:3000` はローカル環境でのみ動作します。Webブラウザから直接アクセスするには上記のVercel URLをご利用ください。  
+> 👉 **デモはこちら → https://support-flow-theta.vercel.app**
 
 ---
 
