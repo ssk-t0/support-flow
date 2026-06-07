@@ -89,7 +89,7 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
           <button type="submit" className="btn-primary px-8">設定を保存する</button>
           {saved && (
             <span className="text-sm text-green-600 font-medium flex items-center gap-1">
@@ -106,7 +106,7 @@ export default function SettingsPage() {
         </p>
         <button
           type="button"
-          className="btn-danger text-sm"
+          className="btn-danger w-full text-sm sm:w-auto"
           onClick={() => {
             if (confirm('すべてのデータを削除してリセットしますか？この操作は元に戻せません。')) {
               localStorage.clear();

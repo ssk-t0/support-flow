@@ -44,7 +44,7 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-4">
         <StatCard title="本日の問い合わせ" value={todayInquiries.length} icon="📩" color="blue" />
         <StatCard title="未対応" value={unhandled.length} icon="🔴" color="red" />
         <StatCard title="対応中" value={inProgress.length} icon="🟡" color="yellow" />

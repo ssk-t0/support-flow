@@ -31,7 +31,7 @@ export default function HandoverForm({ initial, currentUserId, onSubmit, onCance
 
   return (
     <form onSubmit={(e) => { e.preventDefault(); onSubmit(form); }} className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label className="form-label">宛先スタッフ <span className="text-red-500">*</span></label>
           <select className="form-input" value={form.targetStaffId} onChange={(e) => set('targetStaffId', e.target.value)} required>
@@ -46,7 +46,7 @@ export default function HandoverForm({ initial, currentUserId, onSubmit, onCance
           </select>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label className="form-label">重要度</label>
           <select className="form-input" value={form.priority} onChange={(e) => set('priority', e.target.value)}>
@@ -69,7 +69,7 @@ export default function HandoverForm({ initial, currentUserId, onSubmit, onCance
         <label className="form-label">本文 <span className="text-red-500">*</span></label>
         <textarea className="form-input" rows={5} value={form.body} onChange={(e) => set('body', e.target.value)} required />
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label className="form-label">関連顧客名</label>
           <input className="form-input" value={form.relatedCustomerName} onChange={(e) => set('relatedCustomerName', e.target.value)} />
@@ -79,7 +79,7 @@ export default function HandoverForm({ initial, currentUserId, onSubmit, onCance
           <input className="form-input" value={form.relatedInquiryId} onChange={(e) => set('relatedInquiryId', e.target.value)} />
         </div>
       </div>
-      <div className="flex justify-end gap-3 pt-2">
+      <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:justify-end">
         <button type="button" onClick={onCancel} className="btn-secondary">キャンセル</button>
         <button type="submit" className="btn-primary">保存する</button>
       </div>

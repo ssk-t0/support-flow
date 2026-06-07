@@ -79,7 +79,7 @@ export default function ReportsPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap gap-3 items-center justify-between">
-        <div className="flex gap-3">
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
           <FilterSelect value={filterMonth} onChange={setFilterMonth}
             options={months.map((m) => ({ value: m, label: m }))} placeholder="期間（月）" />
           <FilterSelect value={filterStaff} onChange={setFilterStaff}
@@ -88,14 +88,14 @@ export default function ReportsPage() {
         <CsvExportButton data={csvData} filename="inquiries_report.csv" label="CSVエクスポート" />
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           { label: '総問い合わせ件数', value: total, sub: `${filterMonth || '全期間'}`, color: 'bg-blue-50 text-blue-700' },
           { label: '完了率', value: `${completionRate}%`, sub: `${completed}件完了`, color: 'bg-green-50 text-green-700' },
           { label: '未対応率', value: `${unhandledRate}%`, sub: `${unhandled}件未対応`, color: 'bg-red-50 text-red-700' },
           { label: '担当スタッフ数', value: staff.length, sub: `稼働 ${staff.filter((s) => s.workStatus === '稼働中').length}名`, color: 'bg-purple-50 text-purple-700' },
         ].map((item) => (
-          <div key={item.label} className={`rounded-xl p-4 ${item.color.split(' ')[0]}`}>
+          <div key={item.label} className={`rounded-lg p-4 ${item.color.split(' ')[0]}`}>
             <p className="text-xs text-slate-500 mb-1">{item.label}</p>
             <p className={`text-3xl font-bold ${item.color.split(' ')[1]}`}>{item.value}</p>
             <p className="text-xs text-slate-400 mt-1">{item.sub}</p>
@@ -129,7 +129,7 @@ export default function ReportsPage() {
           <h2 className="text-sm font-bold text-slate-800 mb-4">スタッフ別対応ランキング</h2>
           <div className="space-y-3">
             {staffRanking.map((s, i) => (
-              <div key={s.name} className="flex items-center gap-3">
+            <div key={s.name} className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
                 <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${
                   i === 0 ? 'bg-yellow-400 text-white' : i === 1 ? 'bg-slate-300 text-white' : i === 2 ? 'bg-orange-400 text-white' : 'bg-slate-100 text-slate-500'
                 }`}>{i + 1}</span>
@@ -139,7 +139,7 @@ export default function ReportsPage() {
                   </div>
                   <span className="text-sm text-slate-700 truncate">{s.name}</span>
                 </div>
-                <div className="flex-1">
+                <div className="w-full flex-1">
                   <div className="flex items-center gap-2">
                     <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
                       <div className="h-full bg-blue-500 rounded-full" style={{ width: `${total > 0 ? (s.count / total) * 100 : 0}%` }} />

@@ -69,7 +69,7 @@ export default function HandoverPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <p className="text-xs text-slate-500">{filtered.length}件</p>
           {unconfirmedCount > 0 && (
@@ -78,7 +78,7 @@ export default function HandoverPage() {
             </span>
           )}
         </div>
-        <button onClick={() => setShowCreate(true)} className="btn-primary">＋ 申し送り作成</button>
+        <button onClick={() => setShowCreate(true)} className="btn-primary w-full sm:w-auto">＋ 申し送り作成</button>
       </div>
 
       <div className="flex flex-wrap gap-3 items-center">
@@ -127,8 +127,8 @@ export default function HandoverPage() {
                     <p className="text-xs text-slate-500 line-clamp-2">{h.body}</p>
                   </div>
                 </div>
-                <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100">
-                  <div className="flex items-center gap-3 text-xs text-slate-400">
+                <div className="mt-3 flex flex-col gap-2 border-t border-slate-100 pt-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
                     <span>作成: {creator}</span>
                     <span>→</span>
                     <span className="font-medium text-slate-600">宛先: {target}</span>
@@ -161,7 +161,7 @@ export default function HandoverPage() {
               <span className="inline-flex items-center px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-medium">{detailTarget.category}</span>
             </div>
             <h3 className="text-lg font-bold text-slate-900">{detailTarget.subject}</h3>
-            <div className="grid grid-cols-2 gap-3 text-sm">
+            <div className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
               <div><p className="form-label">作成者</p><p>{staffMap[detailTarget.createdById] ?? detailTarget.createdById}</p></div>
               <div><p className="form-label">宛先</p><p>{staffMap[detailTarget.targetStaffId] ?? detailTarget.targetStaffId}</p></div>
               <div><p className="form-label">作成日時</p><p>{formatDateTime(detailTarget.createdAt)}</p></div>
@@ -176,8 +176,8 @@ export default function HandoverPage() {
               <p className="form-label">本文</p>
               <div className="bg-slate-50 rounded-xl p-4 text-sm text-slate-700 whitespace-pre-wrap leading-relaxed">{detailTarget.body}</div>
             </div>
-            <div className="flex justify-between pt-2">
-              <div className="flex gap-2">
+            <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:justify-between">
+              <div className="flex flex-col gap-2 sm:flex-row">
                 <button className="btn-danger text-sm" onClick={() => handleDelete(detailTarget.id)}>削除</button>
                 <button className="btn-secondary text-sm" onClick={() => { setEditTarget(detailTarget); setDetailTarget(null); }}>編集</button>
               </div>

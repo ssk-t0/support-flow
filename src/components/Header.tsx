@@ -20,10 +20,10 @@ export default function Header() {
   });
 
   return (
-    <header className="h-14 bg-white border-b border-slate-200 flex items-center justify-between px-6 fixed top-0 right-0 left-60 z-20">
-      <h1 className="text-base font-bold text-slate-900">{title}</h1>
-      <div className="flex items-center gap-4">
-        <span className="text-xs text-slate-400">{today}</span>
+    <header className="fixed left-0 right-0 top-0 z-20 flex h-14 items-center justify-between border-b border-slate-200 bg-white px-4 sm:px-6 md:left-60">
+      <h1 className="truncate text-base font-bold text-slate-900">{title}</h1>
+      <div className="ml-3 flex flex-shrink-0 items-center gap-3 sm:gap-4">
+        <span className="hidden text-xs text-slate-400 sm:inline">{today}</span>
         <div className="w-2 h-2 rounded-full bg-green-400" title="接続中" />
       </div>
     </header>

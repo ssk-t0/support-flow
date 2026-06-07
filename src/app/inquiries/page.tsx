@@ -65,7 +65,7 @@ export default function InquiriesPage() {
         <div>
           <p className="text-xs text-slate-500">{filtered.length}件表示 / 全{inquiries.length}件</p>
         </div>
-        <button onClick={() => setShowCreate(true)} className="btn-primary">
+        <button onClick={() => setShowCreate(true)} className="btn-primary w-full sm:w-auto">
           ＋ 新規問い合わせ
         </button>
       </div>
@@ -151,7 +151,7 @@ export default function InquiriesPage() {
               <PriorityBadge priority={detailTarget.priority} />
               <span className="inline-flex items-center px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-medium">{detailTarget.type}</span>
             </div>
-            <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="grid grid-cols-1 gap-4 text-sm sm:grid-cols-2">
               <div><p className="form-label">問い合わせID</p><p className="font-mono text-slate-700">{detailTarget.id}</p></div>
               <div><p className="form-label">受付日時</p><p className="text-slate-700">{formatDateTime(detailTarget.receivedAt)}</p></div>
               <div><p className="form-label">顧客名</p><p className="font-semibold text-slate-800">{detailTarget.customerName}</p></div>
@@ -169,7 +169,7 @@ export default function InquiriesPage() {
                 <div className="bg-blue-50 rounded-xl p-4 text-sm text-slate-700 whitespace-pre-wrap leading-relaxed border border-blue-100">{detailTarget.memo}</div>
               </div>
             )}
-            <div className="flex justify-between pt-2">
+            <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:justify-between">
               <button className="btn-danger text-sm" onClick={() => handleDelete(detailTarget.id)}>削除</button>
               <button className="btn-primary" onClick={() => { setEditTarget(detailTarget); setDetailTarget(null); }}>編集する</button>
             </div>

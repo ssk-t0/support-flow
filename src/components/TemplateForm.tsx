@@ -35,7 +35,7 @@ export default function TemplateForm({ initial, onSubmit, onCancel }: Props) {
         <label className="form-label">本文 <span className="text-red-500">*</span></label>
         <textarea className="form-input" rows={10} value={form.body} onChange={(e) => set('body', e.target.value)} required />
       </div>
-      <div className="flex justify-end gap-3 pt-2">
+      <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:justify-end">
         <button type="button" onClick={onCancel} className="btn-secondary">キャンセル</button>
         <button type="submit" className="btn-primary">保存する</button>
       </div>

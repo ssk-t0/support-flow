@@ -51,10 +51,10 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <div className="min-h-screen bg-slate-50">
       <Sidebar user={user} onLogout={handleLogout} />
-      <div className="ml-60">
+      <div className="md:ml-60">
         <Header />
-        <main className="pt-14 min-h-screen">
-          <div className="p-6">{children}</div>
+        <main className="min-h-screen pt-14 pb-20 md:pb-0">
+          <div className="p-4 sm:p-5 md:p-6">{children}</div>
         </main>
       </div>
     </div>

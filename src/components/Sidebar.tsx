@@ -34,8 +34,8 @@ export default function Sidebar({ user, onLogout }: Props) {
   );
 
   return (
-    <aside className="fixed left-0 top-0 h-full w-60 bg-white border-r border-slate-200 flex flex-col z-30">
-      <div className="p-5 border-b border-slate-100">
+    <aside className="fixed inset-x-0 bottom-0 z-30 flex h-16 flex-col border-t border-slate-200 bg-white md:bottom-auto md:left-0 md:top-0 md:h-full md:w-60 md:border-r md:border-t-0">
+      <div className="hidden p-5 border-b border-slate-100 md:block">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
             <span className="text-white text-sm font-bold">SF</span>
@@ -47,27 +47,36 @@ export default function Sidebar({ user, onLogout }: Props) {
         </div>
       </div>
 
-      <nav className="flex-1 p-3 overflow-y-auto">
-        <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider px-3 mb-2">メニュー</p>
-        <ul className="space-y-0.5">
+      <nav className="flex-1 overflow-x-auto overflow-y-hidden p-2 md:overflow-y-auto md:p-3">
+        <p className="hidden text-xs text-slate-400 font-semibold uppercase tracking-wider px-3 mb-2 md:block">メニュー</p>
+        <ul className="flex min-w-max gap-1 md:block md:min-w-0 md:space-y-0.5">
           {visibleItems.map((item) => {
             const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
             return (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`sidebar-link ${isActive ? 'active' : 'text-slate-600'}`}
+                  className={`sidebar-link h-12 min-w-[72px] flex-col justify-center gap-1 px-2 py-1.5 text-[11px] md:h-auto md:min-w-0 md:flex-row md:justify-start md:gap-3 md:px-4 md:py-2.5 md:text-sm ${isActive ? 'active' : 'text-slate-600'}`}
                 >
-                  <span className="text-base">{item.icon}</span>
-                  <span>{item.label}</span>
+                  <span className="text-base leading-none">{item.icon}</span>
+                  <span className="max-w-[64px] truncate md:max-w-none">{item.label}</span>
                 </Link>
               </li>
             );
           })}
+          <li className="md:hidden">
+            <button
+              onClick={onLogout}
+              className="sidebar-link h-12 min-w-[72px] flex-col justify-center gap-1 px-2 py-1.5 text-[11px] text-slate-500 hover:text-red-600 hover:bg-red-50"
+            >
+              <span className="text-base leading-none">🚪</span>
+              <span>ログアウト</span>
+            </button>
+          </li>
         </ul>
       </nav>
 
-      <div className="p-3 border-t border-slate-100">
+      <div className="hidden p-3 border-t border-slate-100 md:block">
         <div className="flex items-center gap-3 px-3 py-2 mb-1">
           <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xs flex-shrink-0">
             {user.name.charAt(0)}

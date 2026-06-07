@@ -35,7 +35,7 @@ export default function InquiryForm({ initial, onSubmit, onCancel }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label className="form-label">顧客名 <span className="text-red-500">*</span></label>
           <input className="form-input" value={form.customerName} onChange={(e) => set('customerName', e.target.value)} required />
@@ -45,7 +45,7 @@ export default function InquiryForm({ initial, onSubmit, onCancel }: Props) {
           <input className="form-input" value={form.contact} onChange={(e) => set('contact', e.target.value)} />
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div>
           <label className="form-label">種別</label>
           <select className="form-input" value={form.type} onChange={(e) => set('type', e.target.value)}>
@@ -80,7 +80,7 @@ export default function InquiryForm({ initial, onSubmit, onCancel }: Props) {
         <label className="form-label">対応メモ</label>
         <textarea className="form-input" rows={3} value={form.memo} onChange={(e) => set('memo', e.target.value)} />
       </div>
-      <div className="flex justify-end gap-3 pt-2">
+      <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:justify-end">
         <button type="button" onClick={onCancel} className="btn-secondary">キャンセル</button>
         <button type="submit" className="btn-primary">保存する</button>
       </div>

@@ -20,8 +20,8 @@ const colorMap = {
 export default function StatCard({ title, value, icon, color, sub }: Props) {
   const c = colorMap[color];
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-5 flex items-center gap-4">
-      <div className={`w-12 h-12 rounded-xl ${c.bg} flex items-center justify-center text-2xl flex-shrink-0`}>
+    <div className="bg-white rounded-lg shadow-sm border border-slate-100 p-4 sm:p-5 flex items-center gap-4">
+      <div className={`w-12 h-12 rounded-lg ${c.bg} flex items-center justify-center text-2xl flex-shrink-0`}>
         {icon}
       </div>
       <div className="min-w-0">

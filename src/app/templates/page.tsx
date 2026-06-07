@@ -64,9 +64,9 @@ export default function TemplatesPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-slate-500">{filtered.length}件</p>
-        <button onClick={() => setShowCreate(true)} className="btn-primary">＋ 新規テンプレート</button>
+        <button onClick={() => setShowCreate(true)} className="btn-primary w-full sm:w-auto">＋ 新規テンプレート</button>
       </div>
 
       <div className="flex flex-wrap gap-3">
@@ -84,7 +84,7 @@ export default function TemplatesPage() {
               <div className="flex items-start justify-between gap-3 mb-3">
                 <div className="flex-1 min-w-0">
                   <h3 className="font-bold text-slate-800 text-sm">{t.title}</h3>
-                  <div className="flex items-center gap-2 mt-1">
+                  <div className="flex flex-wrap items-center gap-2 mt-1">
                     <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${categoryColors[t.category] ?? 'bg-slate-100 text-slate-600'}`}>
                       {t.category}
                     </span>
@@ -98,14 +98,14 @@ export default function TemplatesPage() {
                 <p className="text-xs text-slate-600 whitespace-pre-wrap leading-relaxed line-clamp-5">{t.body}</p>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex gap-2">
                   <button className="text-xs text-blue-600 hover:underline" onClick={() => setEditTarget(t)}>編集</button>
                   <button className="text-xs text-red-500 hover:underline" onClick={() => handleDelete(t.id)}>削除</button>
                 </div>
                 <button
                   onClick={() => handleCopy(t)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     copiedId === t.id
                       ? 'bg-green-500 text-white'
                       : 'bg-blue-600 hover:bg-blue-700 text-white'

@@ -53,9 +53,9 @@ export default function StaffPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-slate-500">全{staff.length}名</p>
-        <button onClick={() => setShowCreate(true)} className="btn-primary">＋ スタッフ追加</button>
+        <button onClick={() => setShowCreate(true)} className="btn-primary w-full sm:w-auto">＋ スタッフ追加</button>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -121,17 +121,17 @@ export default function StaffPage() {
         {detailTarget && (
           <div className="space-y-5">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 text-xl font-bold">
+              <div className="w-14 h-14 rounded-full bg-blue-100 flex flex-shrink-0 items-center justify-center text-blue-700 text-xl font-bold">
                 {detailTarget.name.charAt(0)}
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900">{detailTarget.name}</h3>
-                <p className="text-sm text-slate-500">{detailTarget.role} · {detailTarget.email}</p>
+              <div className="min-w-0">
+                <h3 className="truncate text-xl font-bold text-slate-900">{detailTarget.name}</h3>
+                <p className="break-words text-sm text-slate-500">{detailTarget.role} · {detailTarget.email}</p>
                 <div className="mt-1"><StatusBadge status={detailTarget.workStatus} size="sm" /></div>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 text-center">
+            <div className="grid grid-cols-1 gap-4 text-center sm:grid-cols-2">
               <div className="bg-blue-50 rounded-xl p-4">
                 <p className="text-3xl font-bold text-blue-600">{detailTarget.todayCount}</p>
                 <p className="text-xs text-slate-500 mt-1">本日の対応件数</p>
@@ -146,18 +146,18 @@ export default function StaffPage() {
               <h4 className="text-sm font-bold text-slate-800 mb-2">担当問い合わせ ({staffInquiries.length}件)</h4>
               <div className="space-y-1.5">
                 {staffInquiries.slice(0, 5).map((i) => (
-                  <div key={i.id} className="flex items-center gap-2 text-xs p-2 bg-slate-50 rounded-lg">
+                  <div key={i.id} className="flex flex-wrap items-center gap-2 text-xs p-2 bg-slate-50 rounded-lg">
                     <span className="font-mono text-slate-400">{i.id}</span>
                     <span className="font-medium text-slate-700">{i.customerName}</span>
                     <StatusBadge status={i.status} size="sm" />
-                    <span className="text-slate-400 ml-auto">{i.receivedAt.slice(0, 10)}</span>
+                    <span className="text-slate-400 sm:ml-auto">{i.receivedAt.slice(0, 10)}</span>
                   </div>
                 ))}
                 {staffInquiries.length > 5 && <p className="text-xs text-slate-400 text-center">他 {staffInquiries.length - 5}件</p>}
               </div>
             </div>
 
-            <div className="flex justify-between">
+            <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
               <button className="btn-danger text-sm" onClick={() => handleDelete(detailTarget.id)}>削除</button>
               <button className="btn-primary" onClick={() => { setEditTarget(detailTarget); setDetailTarget(null); }}>編集する</button>
             </div>

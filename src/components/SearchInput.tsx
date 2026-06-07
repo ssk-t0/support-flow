@@ -8,7 +8,7 @@ interface Props {
 
 export default function SearchInput({ value, onChange, placeholder = '検索...' }: Props) {
   return (
-    <div className="relative">
+    <div className="relative w-full sm:w-72">
       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
       <input
         type="text"

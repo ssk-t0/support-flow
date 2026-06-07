@@ -26,7 +26,7 @@ export default function StaffForm({ initial, onSubmit, onCancel }: Props) {
         <label className="form-label">氏名 <span className="text-red-500">*</span></label>
         <input className="form-input" value={form.name} onChange={(e) => set('name', e.target.value)} required />
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label className="form-label">役職</label>
           <input className="form-input" value={form.role} onChange={(e) => set('role', e.target.value)} />
@@ -42,7 +42,7 @@ export default function StaffForm({ initial, onSubmit, onCancel }: Props) {
         <label className="form-label">メールアドレス</label>
         <input type="email" className="form-input" value={form.email} onChange={(e) => set('email', e.target.value)} />
       </div>
-      <div className="flex justify-end gap-3 pt-2">
+      <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:justify-end">
         <button type="button" onClick={onCancel} className="btn-secondary">キャンセル</button>
         <button type="submit" className="btn-primary">保存する</button>
       </div>

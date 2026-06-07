@@ -46,15 +46,15 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-blue-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4 shadow-lg">
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-lg mb-4 shadow-lg">
             <span className="text-white text-2xl font-bold">SF</span>
           </div>
           <h1 className="text-3xl font-bold text-white">SupportFlow</h1>
           <p className="text-blue-200 text-sm mt-2">問い合わせ対応管理システム</p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-2xl p-8">
+        <div className="bg-white rounded-lg shadow-2xl p-5 sm:p-8">
           <h2 className="text-xl font-bold text-slate-900 mb-6">ログイン</h2>
 
           <form onSubmit={handleLogin} className="space-y-4 mb-6">
@@ -103,14 +103,14 @@ export default function LoginPage() {
                 <button
                   key={acc.email}
                   onClick={() => quickLogin(acc.email)}
-                  className={`w-full text-left border rounded-xl p-3 transition-all hover:shadow-sm ${acc.color}`}
+                  className={`w-full text-left border rounded-lg p-3 transition-all hover:shadow-sm ${acc.color}`}
                 >
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <span className="text-xs font-bold uppercase tracking-wider">{acc.label}</span>
                       <p className="text-xs mt-0.5 opacity-80">{acc.email}</p>
                     </div>
-                    <div className="text-right">
+                    <div className="sm:text-right">
                       <p className="text-xs opacity-60">パスワード</p>
                       <p className="text-xs font-mono font-semibold">password</p>
                     </div>

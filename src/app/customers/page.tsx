@@ -61,9 +61,9 @@ export default function CustomersPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-slate-500">{filtered.length}件</p>
-        <button onClick={() => setShowCreate(true)} className="btn-primary">＋ 顧客追加</button>
+        <button onClick={() => setShowCreate(true)} className="btn-primary w-full sm:w-auto">＋ 顧客追加</button>
       </div>
 
       <div className="flex flex-wrap gap-3">
@@ -141,12 +141,12 @@ export default function CustomersPage() {
         {detailTarget && (
           <div className="space-y-5">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 text-xl font-bold">
+              <div className="w-14 h-14 rounded-full bg-blue-100 flex flex-shrink-0 items-center justify-center text-blue-700 text-xl font-bold">
                 {detailTarget.name.charAt(0)}
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900">{detailTarget.name}</h3>
-                <div className="flex gap-1 mt-1">
+              <div className="min-w-0">
+                <h3 className="truncate text-xl font-bold text-slate-900">{detailTarget.name}</h3>
+                <div className="flex flex-wrap gap-1 mt-1">
                   {detailTarget.tags.map((t) => (
                     <span key={t} className={`text-xs px-2 py-0.5 rounded-full font-medium ${tagColors[t]}`}>{t}</span>
                   ))}
@@ -154,7 +154,7 @@ export default function CustomersPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="grid grid-cols-1 gap-4 text-sm sm:grid-cols-2">
               <div><p className="form-label">電話番号</p><p>{detailTarget.phone || '—'}</p></div>
               <div><p className="form-label">メールアドレス</p><p>{detailTarget.email || '—'}</p></div>
               <div><p className="form-label">問い合わせ回数</p><p className="font-bold text-blue-600">{detailTarget.inquiryCount}回</p></div>
@@ -175,11 +175,11 @@ export default function CustomersPage() {
               ) : (
                 <div className="space-y-2">
                   {relatedInquiries.map((i) => (
-                    <div key={i.id} className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg text-xs">
+                    <div key={i.id} className="flex flex-wrap items-center gap-2 p-3 bg-slate-50 rounded-lg text-xs sm:gap-3">
                       <span className="font-mono text-slate-400">{i.id}</span>
                       <StatusBadge status={i.status} size="sm" />
                       <span className="text-slate-600">{i.type}</span>
-                      <span className="text-slate-400 ml-auto">{i.receivedAt.slice(0, 10)}</span>
+                      <span className="text-slate-400 sm:ml-auto">{i.receivedAt.slice(0, 10)}</span>
                     </div>
                   ))}
                 </div>
